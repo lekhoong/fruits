@@ -21,4 +21,8 @@ class ViewController extends Controller
     public function showJuiceForm(){
         return view('juice');
     }
-}
+
+    public function verify(){
+        return view('verify');
+    }
+}   

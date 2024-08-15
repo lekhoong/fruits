@@ -14,13 +14,17 @@ class WelcomeMail extends Mailable
     use Queueable, SerializesModels;
 
     public $user;
+   
 
     /**
      * Create a new message instance.
+     * 
+     * 
      */
     public function __construct($user)
     {
         $this->user =$user;
+       
     }
 
     /**
@@ -36,8 +40,9 @@ class WelcomeMail extends Mailable
     /**
      * Get the message content definition.
      */
-    public function content(): Content
+    public function content()
     {
+        // dd($this);
         return new Content(
             view: 'emails.welcome',
         );

@@ -20,7 +20,16 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'otp',
+        'otp_expires_at',
+        'email_verified_at',
     ];
+
+    protected $dates = [
+        'otp_expires_at',
+        'email_verified_at',
+    ];
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -29,7 +38,6 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
-        'remember_token',
     ];
 
     /**

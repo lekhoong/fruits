@@ -1,15 +1,6 @@
 @extends('layouts.app')
-
+@extends('layouts.navbar')
 @section('content')
-<header class="header">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3 logo_section">
-                <a href={{ route('index') }}><img src="images/logo.png" alt="#" /></a>
-            </div>
-        </div>
-    </div>
-</header>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -19,7 +10,7 @@
                 </div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('vegetables.register') }}">
                         @csrf
 
                         <div class="form-group mb-3">
@@ -32,8 +23,12 @@
                             <label for="email">{{ __('Email Address') }}</label>
                             <br>
                             <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
-                        </div>
-
+                        </div>    
+                        @error('email')
+                        <span class="invalid-feedback" role="alert" style="color:red">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                         <div class="form-group mb-3">
                             <label for="password">{{ __('Password') }}</label>
                             <br>
@@ -47,7 +42,7 @@
                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                         </div>
                         @error('password')
-                        <span class="invalid-feedback" role="alert">
+                        <span class="invalid-feedback" role="alert" style="color:red">
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
