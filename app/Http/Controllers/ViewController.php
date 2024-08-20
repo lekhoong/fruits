@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\User;
 
 use Illuminate\Http\Request;
 
@@ -24,5 +25,10 @@ class ViewController extends Controller
 
     public function verify(){
         return view('verify');
+    }
+
+    public function profile($username){
+        $user=User::where('name', $username)->firstOrFail();
+        return view('profile',compact('user'));
     }
 }   

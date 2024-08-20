@@ -14,6 +14,11 @@ class CreateVegesTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('otp')->nullable();
+            $table->string('phone_number')->unique();
+            $table->string('address')->nullable();
+            $table->string('address2')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
             $table->timestamp('otp_expires_at')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();

@@ -65,7 +65,7 @@
                            </li>
                            @auth
                            <li class="nav-item">
-                               <a class="nav-link" href="#">{{ Auth::user()->name }}</a>
+                               <a class="nav-link" href="{{ url('profile/' . Auth::user()->name) }}">{{ Auth::user()->name }}</a>
                            </li>
                            <li class="nav-item">
                                <form id="logout-form" action="{{ route('logoutFunction') }}" method="POST" style="display: none;">
@@ -79,7 +79,7 @@
                            <li class="nav-item">
                                <a class="nav-link" href="{{ url('login') }}">Login</a>
                            </li>
-                       @endauth            
+                       @endauth                       
                            <li class="nav-item d_none">
                               <a class="nav-link" href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
                            </li>
@@ -160,14 +160,13 @@
          <div class="row d_flex">
             <div class="col-md-7">
                <div class="about_img">
-                  <figure><img src="images/about.png" alt="#" /></figure>
+                  <figure><img src="images/Fruits.png" alt="#" /></figure>
                </div>
             </div>
             <div class="col-md-5">
                <div class="titlepage">
                   <h2>About Us</h2>
-                  <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here'.</p>
-                  <a class="read_more" href="#">About More</a>
+                  <p>At Fresh Vegetables Center, we believe in the power of fresh, locally-sourced vegetables. Our mission is to bring the farm-to-table experience to your home with the finest produce, handpicked daily for quality and taste. Whether you're cooking up a family meal or preparing for a special occasion, our wide selection of fresh vegetables will make every dish vibrant and nutritious.
                </div>
             </div>
          </div>
@@ -181,16 +180,15 @@
          <div class="row">
             <div class="col-md-12">
                <div class="titlepage">
-                  <h2>Our Juices</h2>
-                  <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.</p>
-               </div>
+                  <h2>Our Vegetables</h2>
+                  <p> We are committed to sustainability and supporting local farmers, ensuring that our produce is not only delicious but also eco-friendly. Join us in celebrating healthy eating and discover the difference that fresh, quality vegetables can make.
             </div>
          </div>
          <div class="row">
             <div class="col-md-4">
                <div class="our_main_box">
                   <div class="our_img">
-                     <figure><img src="images/our1.png" alt="#"/></figure>
+                     <figure><img src="images/tomatoes.jpg" alt="#"/></figure>
                   </div>
                   <div class="our_text">
                      <h4>$<strong class="yellow">50</strong></h4>

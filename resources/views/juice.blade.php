@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -85,7 +83,7 @@
             <div class="row">
                <div class="col-md-12">
                   <div class="titlepage">
-                     <h2>Our Juices</h2>
+                     <h2>Our vegetables</h2>
                      <p>is a long established fact that a reader will be distracted by the readable content of a page when looking at </p>
                   </div>
                </div>
@@ -94,7 +92,7 @@
                <div class="col-md-4">
                   <div class="our_main_box">
                      <div class="our_img">
-                        <figure><img src="images/our1.png" alt="#"/></figure>
+                        <figure><img src="images/tomato-icon.png" alt="#"/></figure>
                      </div>
                      <div class="our_text">
                         <h4>$<strong class="yellow">50</strong></h4>
@@ -109,7 +107,7 @@
                <div class="col-md-4">
                   <div class="our_main_box">
                      <div class="our_img">
-                        <figure><img src="images/our2.png" alt="#"/></figure>
+                        <figure><img src="images/carrot.png" alt="#"/></figure>
                      </div>
                      <div class="our_text">
                         <h4>$<strong class="yellow">50</strong></h4>
@@ -122,33 +120,7 @@
                <div class="col-md-4 ">
                   <div class="our_main_box">
                      <div class="our_img">
-                        <figure><img src="images/our3.png" alt="#"/></figure>
-                     </div>
-                     <div class="our_text">
-                        <h4>$<strong class="yellow">50</strong></h4>
-                        <h3>Orange Juice</h3>
-                        <p>is a long established fact that a reader will be</p>
-                        <a class="read_more" href="#">Order Now</a>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-4 margin_top">
-                  <div class="our_main_box">
-                     <div class="our_img">
-                        <figure><img src="images/our4.png" alt="#"/></figure>
-                     </div>
-                     <div class="our_text">
-                        <h4>$<strong class="yellow">50</strong></h4>
-                        <h3>Orange Juice</h3>
-                        <p>is a long established fact that a reader will be</p>
-                        <a class="read_more" href="#">Order Now</a>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-md-4">
-                  <div class="our_main_box">
-                     <div class="our_img">
-                        <figure><img src="images/our5.png" alt="#"/></figure>
+                        <figure><img src="images/pineapple.png" alt="#"/></figure>
                      </div>
                      <div class="our_text">
                         <h4>$<strong class="yellow">50</strong></h4>

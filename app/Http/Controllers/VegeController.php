@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use App\Mail\WelcomeMail;
-use App\Models\Veges;
 use App\Models\User;
 
 class VegeController extends Controller
@@ -65,7 +64,7 @@ class VegeController extends Controller
             $user->save();
 
             // Redirect to login page with success message
-            return redirect('/vegetables')->with('status', 'Email verified successfully! Please log in.');
+            return redirect('/login')->with('status', 'Email verified successfully! Please log in.');
         } else {
             // OTP verification failed
             return back()->withErrors(['otp' => 'Invalid or expired OTP']);
@@ -86,5 +85,31 @@ class VegeController extends Controller
             Auth::logout();
             return redirect('/vegetables');
         }
-    
+
+        public function updateProfile(Request $request, $name)
+        {
+            // 验证请求数据
+            $formFields = $request->validate([
+                'name' => 'required|string|max:255',
+                'email' => 'required|email',
+                'phone_number' => 'required|string',
+                'address' => 'required|string|max:255',
+                'address2' => 'nullable|string|max:255',
+                'city' => 'required|string|max:255',
+                'state' => 'required|string|max:255',
+            ]);
+        
+            // 根据用户名查找用户
+            $user = User::where('name',"=" ,$name)->firstOrFail();
+            
+            // 更新用户详细信息
+            $user->update($formFields);
+        
+            // 成功更新后重定向并显示成功信息
+            if($user){
+                return redirect('/vegetables')->with('status', 'Profile updated successfully!');
+            }
+            return back()->withErrors(['error' => 'Profile update failed!']);
+        }
+        
 }
