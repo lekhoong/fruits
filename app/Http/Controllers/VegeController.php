@@ -100,16 +100,15 @@ class VegeController extends Controller
             ]);
         
             // 根据用户名查找用户
-            $user = User::where('name',"=" ,$name)->firstOrFail();
+            $user = User::where('name', $name)->firstOrFail();
             
+        
             // 更新用户详细信息
             $user->update($formFields);
         
             // 成功更新后重定向并显示成功信息
-            if($user){
-                return redirect('/vegetables')->with('status', 'Profile updated successfully!');
-            }
-            return back()->withErrors(['error' => 'Profile update failed!']);
+            return redirect('/vegetables')->with('status', 'Profile updated successfully!');
         }
         
+
 }
