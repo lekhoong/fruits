@@ -1,211 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- basic -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- mobile metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- site metas -->
-    <title>fresh</title>
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- bootstrap css -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- style css -->
-    <link rel="stylesheet" href="css/style.css">
-    <!-- Responsive-->
-    <link rel="stylesheet" href="css/responsive.css">
-    <!-- favicon -->
-    <link rel="icon" href="images/fevicon.png" type="image/gif" />
-    <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
-    <!-- Tweaks for older IEs-->
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
-</head>
-<body class="main-layout inner_page">
-    <!-- loader -->
-    <div class="loader_bg">
-        <div class="loader"><img src="images/loading.gif" alt="#" /></div>
-    </div>
-    <!-- end loader -->
-    <!-- header -->
-    <header>
-        <div class="header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
-                        <div class="full">
-                            <div class="center-desk">
-                                <div class="logo">
-                                    <a href="{{ url('vegetables') }}"><img src="images/logo.png" alt="#" style=""/></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
-                        <nav class="navigation navbar navbar-expand-md navbar-dark">
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                            <div class="collapse navbar-collapse" id="navbarsExample04">
-                                <ul class="navbar-nav mr-auto">
-                                    <li class="nav-item active">
-                                        <a class="nav-link" href="index.html">Order</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ url('login') }}">Login</a>
-                                    </li>
-                                    <li class="nav-item d_none">
-                                        <a class="nav-link" href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-    <!-- end header -->
-    <!-- Our Juices -->
+@extends('layouts.navbar_index')
+
+    @section('content')
+  
     <div class="juices">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="titlepage">
+                    <div class="titlepage">  
                         <h2>Our vegetables</h2>
                         <p>is a long established fact that a reader will be distracted by the readable content of a page when looking at</p>
                     </div>
                 </div>
             </div>
             <div class="row">
+                @foreach ($products as $product)
                 <div class="col-md-4">
                     <div class="our_main_box">
                         <div class="our_img">
-                            <figure><img src="images/tomato-icon.png" alt="#"/></figure>
+                            <figure><img src="{{ asset($product->image) }}" alt="#"/></figure>
                         </div>
                         <div class="our_text">
-                            <h4>$<strong class="yellow" data-price="10">10(100g)</strong></h4>
-                            <h3>tomato</h3>
-                            <a class="read_more" href="#" data-price="10" data-image="images/tomato-icon.png" data-product="tomato">Order Now</a>
+                            <input type="hidden" name="product_id" data-pid="{{ $product->id }}" value="{{ $product->id }}" >
+                            <h4><strong class="yellow" data-price="10">{{ $product->price }}(100g)</strong></h4>
+                            <h3>{{ $product->name }}</h3>
+                            <a class="read_more" href="#" data-pid="{{ $product->id }}" data-price="{{ preg_replace('/[^0-9.]/', '', $product->price) }}" data-image="{{ asset($product->image) }}" data-product="{{ $product->name }}">Order Now</a>
+
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="our_main_box">
-                        <div class="our_img">
-                            <figure><img src="images/carrot.png" alt="#"/></figure>
-                        </div>
-                        <div class="our_text">
-                            <h4>$<strong class="yellow" data-price="5">5(100g)</strong></h4>
-                            <h3>carrot</h3>
-                            <a class="read_more" href="#" data-price="5" data-image="images/carrot.png" data-product="carrot">Order Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="our_main_box">
-                        <div class="our_img">
-                            <figure><img src="images/pineapple.png" alt="#"/></figure>
-                        </div>
-                        <div class="our_text">
-                            <h4>$<strong class="yellow" data-price="15">15(100g)</strong></h4>
-                            <h3>pineapple</h3>
-                            <a class="read_more" href="#" data-price="15" data-image="images/pineapple.png" data-product="pineapple">Order Now</a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
+    @endsection
     <!-- end Our Juices section -->
     <!-- footer -->
-    <footer id="contact">
-        <div class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="titlepage">
-                            <h2>Contact Us</h2>
-                        </div>
-                    </div>
-                    <div class="col-md-10 offset-md-1">
-                        <form id="request" class="main_form">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <input class="contactus" placeholder="Full Name" type="text" name="Full Name"> 
-                                </div>
-                                <div class="col-md-7">
-                                    <input class="contactus" placeholder="Email" type="email" name="Email"> 
-                                </div>
-                                <div class="col-md-7">
-                                    <input class="contactus" placeholder="Phone Number" type="tel" name="Phone Number">                          
-                                </div>
-                                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12">
-                                    <ul class="social_icon">
-                                        <h3>Follow Me</h3>
-                                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-12">
-                                    <textarea class="contactus1" placeholder="Message" name="Message"></textarea>
-                                </div>
-                                <div class="col-md-12">
-                                    <button class="send_btn">Send</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="col-md-10 offset-md-1">
-                        <ul class="location_icon">
-                            <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i></a> Locations</li>
-                            <li><a href="#"><i class="fa fa-volume-control-phone" aria-hidden="true"></i></a> +71 9087654321</li>
-                            <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a> demo@gmail.com</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!-- end footer -->
-    <!-- Javascript files-->
     <script src="js/jquery.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>
-    <script src="js/jquery-3.0.0.min.js"></script>
-    <!-- sidebar -->
-    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script src="js/custom.js"></script>
-    <script>
-    $(document).ready(function() {
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/jquery-3.0.0.min.js"></script>
+<!-- sidebar -->
+<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="js/custom.js"></script>
+<script>
+$(document).ready(function() {
     $('.read_more').on('click', function(event) {
-        event.preventDefault();
+    event.preventDefault();
 
-        var price = $(this).data('price');
-        var image = $(this).data('image');
-        var product = $(this).data('product');
+    var price = $(this).data('price');
+    console.log('Price:', price); // 检查输出的价格是否正确
+
+    var image = $(this).data('image');
+    var product = $(this).data('product');
+    var pid = $(this).data('pid');
     
-        
-
-        // 创建一个隐藏的表单并提交
-        var form = $('<form action="{{ route('order') }}" method="POST"></form>');
-        form.append('<input type="hidden" name="_token" value="{{ csrf_token() }}">');
-        form.append('<input type="hidden" name="price" value="' + price + '">');
-        form.append('<input type="hidden" name="image" value="' + image + '">');
-        form.append('<input type="hidden" name="product" value="' + product + '">'); // 添加产品名称
-        $('body').append(form);
-        form.submit();
-    });
+    // 创建并提交隐藏表单
+    var form = $('<form action="{{ route('order') }}" method="POST"></form>');
+    form.append('<input type="hidden" name="_token" value="{{ csrf_token() }}">');
+    form.append('<input type="hidden" name="price" value="' + price + '">');
+    form.append('<input type="hidden" name="image" value="' + image + '">');
+    form.append('<input type="hidden" name="product" value="' + product + '">');
+    form.append('<input type="hidden" name="product_id" value="'+pid+'">');
+    $('body').append(form);
+    form.submit();
 });
-  </script>  
-</body>
-</html>
+});
+</script>  
+    

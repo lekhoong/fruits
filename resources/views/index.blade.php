@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,10 +59,10 @@
                      <div class="collapse navbar-collapse" id="navbarsExample04">
                         <ul class="navbar-nav mr-auto">
                            <li class="nav-item active">
-                              <a class="nav-link" href="{{ url('vegetables') }}">Home</a>
+                              <a class="nav-link" href="{{ url('vegetables') }}">HOME</a>
                            </li>
                            <li class="nav-item">
-                              <a class="nav-link" href="{{ url('juice') }}">Order</a>
+                              <a class="nav-link" href="{{ url('juice') }}">ORDER</a>
                            </li>
                            @auth
                            <li class="nav-item">
@@ -72,17 +73,21 @@
                                    @csrf
                                </form>
                                <a class="nav-link" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                   Logout
+                                   LOGOUT
                                </a>
                            </li>
                        @else
                            <li class="nav-item">
-                               <a class="nav-link" href="{{ url('login') }}">Login</a>
+                               <a class="nav-link" href="{{ url('login') }}">LOGIN</a>
                            </li>
-                       @endauth                       
+                       @endauth  
+                            <li class="nav-item ">
+                                 <a class="nav-link" href="{{ url('cart') }}">CART</a>
+                            </li>                     
                            <li class="nav-item d_none">
                               <a class="nav-link" href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
                            </li>
+                           
                         </ul>
                      </div>
                   </nav>

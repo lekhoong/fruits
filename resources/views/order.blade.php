@@ -9,17 +9,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    @extends('layouts.order_design')
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order Page</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
-<body>
     <header class="header">
         <div class="container">
             <div class="row">
@@ -31,17 +20,19 @@
     </header>
     <div class="order-container">
         <h1 class="text-center">{{ $product }}</h1>
-        <img src="{{ $image }}" alt="image" class="product-img">
+        <img src="{{ $image }}" alt="image" class="product-img" style="width: 50%; margin: 0 auto; display: block;">
 
         <div class="price-weight">
             <p>Price: $<span id="price">{{ $price }}</span> / <span id="weight">100</span>g</p>
         </div>
 
+        <!-- Form for Buy Now -->
         <form action="{{ route('finalOrder') }}" method="POST">
             @csrf
             <input type="hidden" name="price" id="finalPrice" value="{{ $price }}">
             <input type="hidden" name="weight" id="finalWeight" value="100">
             <input type="hidden" name="image" value="{{ $image }}">
+            <input type="hidden" name="productName" value="{{ $product }}">
 
             <div class="weight-btns">
                 <button type="button" class="btn btn-custom" id="addWeightButton">+100g</button>
@@ -49,6 +40,15 @@
             </div>
 
             <button type="submit" class="btn btn-success btn-block">Buy Now</button>
+            <br>
+        </form>
+
+        <!-- Form for Add to Cart -->
+        <form action="{{ route('addToCart') }}" method="POST">
+            @csrf
+            <input type="hidden" name="product_id" value="{{ $productId }}">
+            <input type="hidden" name="quantity" id="cartQuantity" value="100">
+            <button type="submit" class="btn btn-warning btn-block">Add to Cart</button>
         </form>
     </div>
 
@@ -61,6 +61,7 @@
             var weightElement = document.getElementById('weight');
             var finalPriceInput = document.getElementById('finalPrice');
             var finalWeightInput = document.getElementById('finalWeight');
+            var cartQuantityInput = document.getElementById('cartQuantity');
 
             // 增加重量按钮
             document.getElementById('addWeightButton').addEventListener('click', function() {
@@ -87,6 +88,7 @@
                 // 更新隐藏表单字段的值
                 finalPriceInput.value = newPrice.toFixed(2);
                 finalWeightInput.value = currentWeight;
+                cartQuantityInput.value = currentWeight;
             }
         });
     </script>

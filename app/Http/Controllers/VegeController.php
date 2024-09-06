@@ -19,7 +19,7 @@ class VegeController extends Controller
     {
         // Validate the request data
         $formFields = $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:255|unique:users,name',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|string|confirmed',
         ]);
@@ -32,7 +32,7 @@ class VegeController extends Controller
 
         // Store OTP and set expiration time
         $formFields['otp'] = $otp;
-        $formFields['otp_expires_at'] = now()->addMinutes(5);
+        // $formFields['otp_expires_at'] = now()->addMinutes(5);
 
         // Create the user in the users model
         $user = User::create($formFields);
@@ -54,7 +54,7 @@ class VegeController extends Controller
 
         // Find the user with the matching OTP and make sure it's not expired
         $user = User::where('otp', $request->otp)
-                     ->where('otp_expires_at', '>=', now())
+                    //  ->where('otp_expires_at', '>=', now())
                      ->first();
 
         if ($user) {
