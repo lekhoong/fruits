@@ -29,13 +29,15 @@ Route::controller(VegeController::class)->group(function () {
 Route::controller(OrderController::class)->group(function(){
     Route::post('/order', 'order')->name('order')->middleware(checkAuth::class);
     Route::post('/finalOrder','finalOrder')->name('finalOrder');
-    Route::post('/addToCart', 'addToCart')->name('addToCart');
+    Route::post('/addToCart/{name}', 'addToCart')->name('addToCart');
    
 });
 
 Route::controller(CartController::class)->group(function(){
    Route::delete('/cart/{id}', 'remove')->name('remove')->middleware(checkAuth::class);
    Route::post('/checkout','checkout')->name('checkout');
+   Route::get('/track-purchases','trackPurchases')->name('track-purchases');
+
 });
 
 

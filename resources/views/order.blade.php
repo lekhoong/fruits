@@ -26,9 +26,7 @@
             <p>Price: $<span id="price">{{ $price }}</span> / <span id="weight">100</span>g</p>
         </div>
 
-        <!-- Form for Buy Now -->
-        <form action="{{ route('finalOrder') }}" method="POST">
-            @csrf
+       
             <input type="hidden" name="price" id="finalPrice" value="{{ $price }}">
             <input type="hidden" name="weight" id="finalWeight" value="100">
             <input type="hidden" name="image" value="{{ $image }}">
@@ -39,12 +37,10 @@
                 <button type="button" class="btn btn-custom" id="subtractWeightButton">-100g</button>
             </div>
 
-            <button type="submit" class="btn btn-success btn-block">Buy Now</button>
-            <br>
-        </form>
+        {{-- </form> --}}
 
         <!-- Form for Add to Cart -->
-        <form action="{{ route('addToCart') }}" method="POST">
+        <form action="{{ route('addToCart', ['name' => url('profile/' . Auth::user()->name) }}" method="POST">
             @csrf
             <input type="hidden" name="product_id" value="{{ $productId }}">
             <input type="hidden" name="quantity" id="cartQuantity" value="100">

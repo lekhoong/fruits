@@ -77,9 +77,9 @@
                       <li class="nav-item ">
                         <a class="nav-link" href="{{ url('cart') }}">CART</a>
                       </li>                             
-                         <li class="nav-item d_none">
-                            <a class="nav-link" href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
-                         </li>
+                      <li class="nav-item ">
+                        <a class="nav-link" href="{{ url('track-purchases') }}">TRACK</a>
+                     </li>         
                       </ul>
                    </div>
                 </nav>

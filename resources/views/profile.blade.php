@@ -7,7 +7,6 @@
                 <div class="card-header text-center">
                     <h3>{{ __('Your Profile') }}</h3>
                 </div>
-
                 <div class="card-body">
                     <form method="POST" action="{{ route('profile_update', ['name' => $user->name]) }}">
                         @csrf
@@ -114,6 +113,12 @@
                         <div class="form-group text-center">
                             <button type="submit" class="btn btn-custom w-100">
                                 {{ __('Save Changes') }}
+                            </button>
+                        </div>
+                        <br>
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-custom w-100"  a href="{{ route('juice') }}">
+                                {{ __('Back') }}
                             </button>
                         </div>
                     </form>

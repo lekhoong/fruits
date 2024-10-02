@@ -15,4 +15,8 @@ class purchases extends Model
         'delivery_method',
         'status',
     ];
+    public function items()
+    {
+        return $this->hasMany(PurchaseItem::class,'purchase_id');
+    }
 }

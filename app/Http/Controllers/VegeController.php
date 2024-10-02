@@ -92,16 +92,15 @@ class VegeController extends Controller
             $formFields = $request->validate([
                 'name' => 'required|string|max:255',
                 'email' => 'required|email',
-                'phone_number' => 'required|string',
-                'address' => 'required|string|max:255',
-                'address2' => 'nullable|string|max:255',
-                'city' => 'required|string|max:255',
-                'state' => 'required|string|max:255',
+                'phone_number' => 'string|nullable',
+                'address' => 'string|nullable|max:255',
+                'address2' => 'nullable|string|nullable|max:255',
+                'city' => 'string|nullable|max:255',
+                'state' => 'string|nullable|max:255',
             ]);
         
             // 根据用户名查找用户
             $user = User::where('name', $name)->firstOrFail();
-            
         
             // 更新用户详细信息
             $user->update($formFields);
@@ -109,6 +108,7 @@ class VegeController extends Controller
             // 成功更新后重定向并显示成功信息
             return redirect('/vegetables')->with('status', 'Profile updated successfully!');
         }
+        
         
 
 }

@@ -34,45 +34,51 @@ class OrderController extends Controller
         $productName = $request->input('productName');
 
         // 返回最终订单视图，并将相关数据传递到视图中
-        return view('finalOrder', compact('totalPrice', 'quantity', 'image', 'productName'));
+        return view('cart', compact('totalPrice', 'quantity', 'image', 'productName'));
     }
-    public function addToCart(Request $request)
-    {
-        $productId = $request->input('product_id');
-        $quantity = $request->input('quantity', 100);
-    
-        // 获取产品信息
-        $product = Product::find($productId);
-    
-        if (!$product) {
-            return redirect()->back()->withErrors('not found');
-        }
-        
-    
-        // 确保价格是浮点数
-        $price = floatval($product->price);
-    
-        $userId = auth()->id();
-    
-        $cartItem = Carts::where('user_id', $userId)
-                          ->where('product_id', $productId)
-                          ->first();
-    
-        if ($cartItem) {
-            $cartItem->quantity += $quantity;
-            $cartItem->save();
-        } else {
-            Carts::create([
-                'user_id' => $userId,
-                'product_id' => $productId,
-                'quantity' => $quantity,
-                'price' => $price, // 确保价格正确
-                'image' => $product->image,
-            ]);
-        }
-    
-        return redirect('/cart');
+    public function addToCart(Request $request, $name)
+{
+    // Retrieve the authenticated user
+    $user = auth()->user();
+
+    // Ensure $user is not null
+    if (!$user) {
+        return redirect()->route('login'); // Redirect to login if the user is not authenticated
     }
+
+    $productId = $request->input('product_id');
+    $quantity = $request->input('quantity', 100);
+
+    // Get product info
+    $product = Product::find($productId);
+
+    if (!$product) {
+        return redirect()->back()->withErrors('Product not found');
+    }
+
+    $price = floatval($product->price); // Ensure price is a float
+
+    // Add or update the product in the user's cart
+    $cartItem = Carts::where('user_id', $user->id)
+                      ->where('product_id', $productId)
+                      ->first();
+
+    if ($cartItem) {
+        $cartItem->quantity += $quantity;
+        $cartItem->save();
+    } else {
+        Carts::create([
+            'user_id' => $user->id,
+            'product_id' => $productId,
+            'quantity' => $quantity,
+            'price' => $price,
+            'image' => $product->image,
+        ]);
+    }
+
+    return redirect('/cart');
+}
+
 
      
 }

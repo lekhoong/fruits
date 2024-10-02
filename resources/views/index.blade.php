@@ -84,9 +84,9 @@
                             <li class="nav-item ">
                                  <a class="nav-link" href="{{ url('cart') }}">CART</a>
                             </li>                     
-                           <li class="nav-item d_none">
-                              <a class="nav-link" href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
-                           </li>
+                            <li class="nav-item ">
+                              <a class="nav-link" href="{{ url('track-purchases') }}">TRACK</a>
+                           </li>             
                            
                         </ul>
                      </div>
@@ -106,7 +106,6 @@
                <div class="test_box">
                   <div class="text-bg">
                      <h1><span> Welcome to</span> <br>Our Vegetables Center</h1>
-                     <a class="read_more" href="#">Read More</a>
                   </div>
                </div>
             </div>
@@ -179,86 +178,6 @@
    </div>
    <!-- end about -->
 
-   <!-- Our Juices -->
-   <div class="juices ">
-      <div class="container">
-         <div class="row">
-            <div class="col-md-12">
-               <div class="titlepage">
-                  <h2>Our Vegetables</h2>
-                  <p> We are committed to sustainability and supporting local farmers, ensuring that our produce is not only delicious but also eco-friendly. Join us in celebrating healthy eating and discover the difference that fresh, quality vegetables can make.
-            </div>
-         </div>
-         <div class="row">
-            <div class="col-md-4">
-               <div class="our_main_box">
-                  <div class="our_img">
-                     <figure><img src="images/tomatoes.jpg" alt="#"/></figure>
-                  </div>
-                  <div class="our_text">
-                     <h4>$<strong class="yellow">50</strong></h4>
-                     <h3>Orange Juice</h3>
-                     <p>It is a long established fact that a reader will be distracted by the readable content.</p>
-                     <a class="read_more" href="#">Order Now</a>
-                  </div>
-               </div>
-            </div>
-            <div class="col-md-4"></div>
-            <div class="col-md-4">
-               <div class="our_main_box">
-                  <div class="our_img">
-                     <figure><img src="images/our2.png" alt="#"/></figure>
-                  </div>
-                  <div class="our_text">
-                     <h4>$<strong class="yellow">50</strong></h4>
-                     <h3>Orange Juice</h3>
-                     <p>It is a long established fact that a reader will be distracted by the readable content.</p>
-                     <a class="read_more" href="#">Order Now</a>
-                  </div>
-               </div>
-            </div>
-            <div class="col-md-4 ">
-               <div class="our_main_box">
-                  <div class="our_img">
-                     <figure><img src="images/our3.png" alt="#"/></figure>
-                  </div>
-                  <div class="our_text">
-                     <h4>$<strong class="yellow">50</strong></h4>
-                     <h3>Orange Juice</h3>
-                     <p>It is a long established fact that a reader will be distracted by the readable content.</p>
-                     <a class="read_more" href="#">Order Now</a>
-                  </div>
-               </div>
-            </div>
-            <div class="col-md-4 margin_top">
-               <div class="our_main_box">
-                  <div class="our_img">
-                     <figure><img src="images/our4.png" alt="#"/></figure>
-                  </div>
-                  <div class="our_text">
-                     <h4>$<strong class="yellow">50</strong></h4>
-                     <h3>Orange Juice</h3>
-                     <p>It is a long established fact that a reader will be distracted by the readable content.</p>
-                     <a class="read_more" href="#">Order Now</a>
-                  </div>
-               </div>
-            </div>
-            <div class="col-md-4">
-               <div class="our_main_box">
-                  <div class="our_img">
-                     <figure><img src="images/our5.png" alt="#"/></figure>
-                  </div>
-                  <div class="our_text">
-                     <h4>$<strong class="yellow">50</strong></h4>
-                     <h3>Orange Juice</h3>
-                     <p>It is a long established fact that a reader will be distracted by the readable content.</p>
-                     <a class="read_more" href="#">Order Now</a>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
    <!-- end Our Juices  section -->
 
    <!-- Javascript files-->
