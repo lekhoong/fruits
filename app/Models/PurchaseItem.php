@@ -5,8 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
-// Model representing an item within a purchase
 class PurchaseItem extends Model
 {
     use HasFactory;
@@ -21,12 +19,14 @@ class PurchaseItem extends Model
     // 定义与 Purchase 的关系
     public function purchase()
     {
-        return $this->belongsTo(purchases::class);
+      
+        return $this->belongsTo(Purchases::class, 'purchase_id');
     }
 
     // 定义与 Product 的关系
     public function product()
     {
-        return $this->belongsTo(Product::class,'product_id');
+        // 确保外键是正确的
+        return $this->belongsTo(Product::class, 'product_id');
     }
 }

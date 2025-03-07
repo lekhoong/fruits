@@ -31,7 +31,16 @@
                                 <strong>{{ $message }}</strong>
                             </span>
                             @enderror
-                        <button type="submit" class="btn btn-primary w-100">{{ __('Login') }}</button>
+                        <button type="submit" class="btn btn-primary w-100" style="
+                            background: linear-gradient(135deg, #FFA07A 0%, #FF7043 100%);
+                            border: none;
+                            padding: 12px;
+                            font-weight: 600;
+                            border-radius: 8px;
+                            transition: all 0.3s ease;
+                            margin-top: 10px;
+                            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                        ">{{ __('Login') }}</button>
                         <div class="form-group mt-3 text-center">
                             <p>{{ __("Don't have an account?") }}</p>
                             <a href="{{ route('register') }}" class="btn btn-secondary">{{ __('Register Here') }}</a>

@@ -3,8 +3,10 @@
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\VegeController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ViewController;
+use App\Http\Middleware\Admin;
 use App\Http\Middleware\checkAuth;
 
 Route::controller(ViewController::class)->group(function () {
@@ -40,8 +42,16 @@ Route::controller(CartController::class)->group(function(){
 
 });
 
+Route::prefix('admin')->controller(AdminController::class)->group(function () {
+    Route::get('/', 'index')->name('admin.dashboard')->middleware(Admin::class);
+    Route::put('/update-status/{id}', 'updateStatus')->name('admin.updateStatus');
+    Route::get('/products/create','create')->name('admin.products.create')->middleware(Admin::class);
+    Route::post('/products','store')->name('admin.products.store');
+});
 
         
+
+
 
 
 

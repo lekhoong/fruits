@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
-            background: linear-gradient(135deg, #FFB800, #FF9500); /* 主页面颜色渐变 */
+            background: linear-gradient(135deg, #FFB800, #FF9500);
             color: #333;
             font-family: 'Nunito', sans-serif;
             font-family: 'Arial', sans-serif;

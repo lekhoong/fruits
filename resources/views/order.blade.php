@@ -40,12 +40,13 @@
         {{-- </form> --}}
 
         <!-- Form for Add to Cart -->
-        <form action="{{ route('addToCart', ['name' => url('profile/' . Auth::user()->name) }}" method="POST">
+        <form action="{{ route('addToCart', ['name' => Auth::user()->name]) }}" method="POST">
             @csrf
             <input type="hidden" name="product_id" value="{{ $productId }}">
             <input type="hidden" name="quantity" id="cartQuantity" value="100">
             <button type="submit" class="btn btn-warning btn-block">Add to Cart</button>
         </form>
+        
     </div>
 
     <!-- JavaScript -->

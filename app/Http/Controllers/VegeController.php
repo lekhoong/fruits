@@ -70,16 +70,29 @@ class VegeController extends Controller
             return back()->withErrors(['otp' => 'Invalid or expired OTP']);
         }
     }
-        public function login(Request $request){
-            $credentials = $request->only('email','password');
-            if(Auth::attempt($credentials)){
-                $user = Auth::user();
-                if($user->email_verified_at == null){
-                    return redirect('/verify');
-                }
-                return redirect()->intended('/vegetables');
+    public function login(Request $request)
+    {
+        // 获取登录数据
+        $credentials = $request->only('email', 'password');
+    
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+    
+            // 检查邮箱是否已验证
+            if ($user->email_verified_at == null) {
+                return redirect('/verify')->withErrors(['email' => 'Please verify your email.']);
             }
-            return redirect('/login')->withErrors(['email' => 'Invalid credentials']);
+    
+            // 根据角色重定向
+            if ($user->role === 'admin') {
+                return redirect('/admin')->with('status', 'Welcome to the Admin Dashboard!');
+            } else {
+                return redirect()->intended('/vegetables')->with('status', 'Welcome to the Vegetable Market!');
+            }
+        }
+    
+        // 登录失败，返回错误消息
+        return redirect('/login')->withErrors(['email' => 'Invalid credentials.']);
     }
         public function logoutFunction(){
             Auth::logout();

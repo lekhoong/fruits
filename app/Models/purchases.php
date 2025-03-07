@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class purchases extends Model
+class Purchases extends Model
 {
     use HasFactory;
 
@@ -15,8 +15,22 @@ class purchases extends Model
         'delivery_method',
         'status',
     ];
-    public function items()
+
+    /**
+   
+     */
+    public function Items()
     {
-        return $this->hasMany(PurchaseItem::class,'purchase_id');
+      
+        return $this->hasMany(PurchaseItem::class, 'purchase_id');
+    }
+
+    /**
+     * 定义与 User 模型的关系
+     */
+    public function user()
+    {
+        // 每个 Purchase 属于一个 User
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
